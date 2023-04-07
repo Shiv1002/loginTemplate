@@ -198,8 +198,8 @@
                     <input id="pass" type="password" value="" autocomplete="off" placeholder="Password">
                     <img style="height: inherit;"
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAACfUlEQVR4nO2cT04UURCHvwCBhX/WMuyNR9G49gQmLhBZMp5D9CC68AiIC8UjGDXuDWxYlXmZB9Fok5nuN6mq7t+XVMIGpuqbmno9Q02DEEIIIYQQQkyIHeAQOAUuAEsSFzXnA2Cb4OwBXwJIs4FxVmsJ28ljkGw1Pkft7MMAcqxxPCcgHwOIscbxgYCcBxBjjaPUFA4baYTDW4hJNO6y1NH4i9ToIEaEw1uISTTustTR+IvU6CBGhMNbiEk07rLU0fiL1OhgIeEbcAw8BB4At2qUnx8Br4HvEt2/k34Az4CtJc6HDeAJ8FUdzUqS3wJ3ehzI5XfeaXSwlORXtUP7slFHjWY03RLeA5sDJP8pu7wqdBjy/5ncZ1x0cRf4qasO/hH9dIVdkWV3MMphqss7/r6E2+y5K3LTDsZWfaXoOpqFhOOBuyI37WC8kWiuRZU3HkN3Rbp2MB5LNNeS7jfYFenawSjvIDU6WEi43WBXpGsHo/xtiWYhoYtWHwBJNBK9MuvoGlNHD5dyCRwBM9ZPeYx5fcxWT54bqxYwd8hxPkXRuw453puiaC+y5Jm+AEuSZ/oCLEme6QuwJHmmL8CS5Jm+AEuSZ/oCLEme6QuwJHmmL8CS5Jm+AEuSZ/oCLEme6QuwJHk2K2DmkOPeFEXPHXJ8OUXRl1W2Pvhfs2hLEuHwFmISjbssdTT+IjU6iBHh8BZiEo27LHU0/iI1OogR4fAWYhKNuyx1NP4iNTqIEeHwFmISjbusUXX0GG8C+4uAnAYQY43jhIC8CCDGGsc+Admp38u2kcSnqLeev/ov89lIJM8Izna9vcNJsgPyvOa8H7mThRBCCCGEEILW/AYj/yS3Y4SIUQAAAABJRU5ErkJggg==">
-
                 </div>
+                <label id="passError"></label>
             </th>
         </tr>
         <tr>
@@ -246,6 +246,17 @@
             document.getElementById('emailError').innerHTML = "correct email"
         }else{
             document.getElementById('emailError').innerHTML = "wrong email"
+        }
+
+        for (const [key, value] of form) {
+            console.log(key, value)
+        }
+
+        var passPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/
+        if (passPattern.test(form.get('password'))){
+            document.getElementById('passError').innerHTML = "correct"
+        }else{
+            document.getElementById('passError').innerHTML = "wrong"
         }
 
         for (const [key, value] of form) {
