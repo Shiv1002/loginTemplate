@@ -26,7 +26,7 @@
             background-repeat: no-repeat;
             flex-direction: column;
             align-items: center;
-
+            background-color: #887c7c;
             font-family: 'Cabin', sans-serif;
             margin-top: 5vh;
 
@@ -37,7 +37,7 @@
             height: 40%;
             width: 40%;
             border: 2px solid rgba(234, 234, 234, 0.441);
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(2px);
             background-color: rgba(255, 255, 255, 0.1);
             color: aliceblue;
             text-shadow: 2px 2px 6px #887c7c;
@@ -52,7 +52,7 @@
         }
 
         table * {
-            margin: 0.3rem 0;
+            margin: 0.3rem 0.1rem;
         }
 
         table tr th input {
@@ -62,15 +62,30 @@
             font-family: 'Cabin';
             border-color: aliceblue;
             font-size: large;
+            outline: none;
+            padding: 0 1rem;
+            border: 0px;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .show {
+            display: inline;
+        }
+        .black{
+            color: #000000;
         }
 
         #captchrow {
             display: flex;
-            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
 
         }
 
-        #captchrow * {
+        #captchrow input {
             width: 60% !important;
         }
 
@@ -92,83 +107,126 @@
             border-color: rgb(202, 177, 147);
         }
 
+        table tr th label {
+            font-size: larger;
+            padding: 0.1rem;
+            margin-right: auto;
+            color: #ffffff;
+            text-shadow: none;
+            font-weight: bolder;
+        }
+
+        .valid {
+            color: rgb(0, 255, 0) !important;
+        }
+
+        .invalid {
+            color: rgb(255, 0, 0);
+        }
+
         div.input {
             margin: 0.3rem auto;
             display: flex;
             width: 100%;
             align-items: center;
-            padding: 1.5rem;
+            padding: 1.5rem 1rem 1.5rem 0;
             background-color: white;
             height: 2rem;
             box-sizing: border-box;
             justify-content: space-between;
             border-radius: 4rem;
         }
+        
 
         div.input input {
             width: 80%;
             height: inherit;
+            position: relative;
             border: 0px solid rgb(132, 40, 40);
             outline: none;
         }
-
+        .reCaptcha{
+            color: rgb(255, 255, 255);
+            text-shadow: none !important;
+        }
+        .reCaptcha:visited{
+            color: #3dfd0d;
+        }
         div.input input:focus {
             border: 0px;
         }
 
-
-
-        @media screen and (max-width: 1196px) {
+        @media screen and (min-width:400px) {
             table {
-                width: 35%;
-            }
-
-            body {
-                background-color: #fd0d0d;
+                width: 100%;
             }
         }
 
-        @media screen and (max-width: 992px) {
-            table {
-                width: 45%;
-            }
-
-            body {
-                background-color: #45fd0d;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            table {
-                width: 60%;
-            }
-
-            body {
-                background-color: #000000;
-            }
-        }
-
-        @media screen and (max-width: 576px) {
+        @media screen and (min-width: 576px) {
             table {
                 width: 80%;
             }
 
+        }
+
+        @media screen and (min-width: 768px) and (min-height:2000px) {
             body {
-                background-color: #0d6efd;
+                height: 100%;
+            }
+
+            table {
+                width: 80%;
+                height: 50%;
             }
         }
 
-        @media screen and (max-width:500px) {
+        @media screen and (min-width: 992px)and (min-height:600px) {
+
             table {
-                width: 100%;
+                width: 45%;
             }
 
-            body {
-                background-color: #ffffff;
+        }
+
+        @media screen and (min-width: 1200px) {
+            table {
+                width: 35%;
             }
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translate(-3px, 0);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translate(1px, 0);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .shake {
+            animation: shake 0.3s;
         }
     </style>
     <!-- Matomo -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/31f94b3824.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -185,10 +243,10 @@
             <th>
                 <div class="input">
                     <input id="email" type="text" value="" autocomplete="off" placeholder="Enter Email" />
-                    <img style="height: inherit;"
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFEUlEQVR4nO2cWchVVRTHf5o22mB9Nls0l5kRURHSQ0VEkUEPkn2EDxVREVG+1ENBEYa9BEmhEETzaHMvWWrz/FBhPTQXqWhqaV+Dpu7YtS593O65e59hD7ez/vCHy/edvfZe/3vOOnuvvfYFxWjsDBwhtJ8VDcGKOQt4DFgLmC7avz0KXKjCV8NYYDawooe4RbTXXg6Mq9hn67AP8FYJgbv5BrB3aidyxxTguxoid/gtcExqZ3LFXsCXDYjc4TfApNRO5YYxwKsNitzhK2JbIbgogMgdzux00naMbzhkdPNznYn8g7MCitzhGdJXq3FXBKHvTO1kDlgeQehPUjuZA36OIPR6Wo6dIojcoe2rtRiKKLTtq7UYUqHjYNeIQtu+WosxwJ8RRN6sS3H4NILQOr0D7o0g9D2pH90cMCOC0OemdjIHjJPccSiRv9ak0r+4LKDQl4zqp/UYC7weQORlOtv4L/Yvuevt4g/Afj36UQBHi0B1RV4FHKuK9sdBwNs1RLZtJ9MAJgLvBHx5mID8HTjFcyZyFbCmhG177ZVNzzB2ARZnIJypwBUlYueOwDDwDLC6h63V8r9huTYIdgCeykA4U4HvyZNZJdt3lLDxtGe/uoTtIi1hTQAubyqWNoX7HHHHfhF3ZCCcKcltwCM5zXPtoJ73iEHXZyCe8YzR86TGOSuMXuXs5rjWvqm3ZhwqZuecdxg92HeBPR3XXxwpmW48+TFwQU4hogjdA/8MONDR5jzgt8QCjwA3A9szIOjlxFfAoY52pwMbE4n8ouQuqsDOpOqiko0iZ1YCUx1tTyo4+xGKW4AbK4QJm+O4QSr918gTWRUzxec3ZYLgXZDez7F1HkvaKQ0laozH8rrMTsbucuakKK/xuHwBvpgGPFlg60PgCtdkwuXgL8CZjkEcAnwRUOQ/gHM8BTlA5v0jnnPtJcA1wIld8d6WDxwPXAe8LNe67Nk+5xe943wdtW/2fthXdoNDCD3LQ2C7ZF4gY63T14g8PXVvjAWSKSwldCc+Xupwdo+aJ55MDz7sGTfLZOJi8VeJ43aHp1RD+/hcGzHzt1EO+fQLE0syENRFe36mUsNbPDJ/iwLXS0xreGsqNCs3nB8h83dage3Jsp1k2iC05QOBM38TCuw+lIFwUYW2fNYj83dTRdtFK7B1bRTacqlH2erVFTJ/RUL/1FahLd93zBCqZP7sAfleWNRmoY2UyNopVz+cX2JBML3AxuFyQKe1QneK/g5rKPN3ex8bR8rm8SDEazvGIIZt5u84j8zfjw47q/rMPAYOob5F+2if2kDmby7/E4R8ZGyC5mxH/wfLwfUiG1tr5o+zQej4tMnjpxbs7OIjR3Jm4MU2EbjFo2B7oqP40E4LbxvkE6omErcBcxrI/K2UpNZ0SV4NDExkznOMx+5yPOFh57lMi36yEdrIb2j8nQwvgF16L+zTfqFjJ9ravjuRb1kJbYAHPaqKZkgoWSt8yeOlOF52ZVL5lZ3QBnih4ZebjdlPJ/YpS6EN8JpHzZ8PJshudWp/shXaAB/ULPweEhup/cheaAN8D5xcQeQTpIQt9fgHRmgj6dNbPSpakWvmNlCD0UqhjXADcL/8AuNU+Q3QSfJ5WPYqN2QwzoEX2gwwVWhUaFLfhXpHk144DR2kF1VjNCo0qe84vaNJL5KGDtILqDGavKgLFlRoUt+FekeTXjgNHaQXVWM0GQqtUCgUCoVCoVAoFOSIvwBtoc6hW9+oUAAAAABJRU5ErkJggg==">
+
+                    <i class="fa-solid fa-user black"></i>
                 </div>
-                <label id="emailError"></label>
+                <label id="emailError" class="none"></label>
             </th>
 
         </tr>
@@ -196,25 +254,24 @@
             <th>
                 <div class="input">
                     <input id="pass" type="password" value="" autocomplete="off" placeholder="Password">
-                    <img style="height: inherit;"
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAACfUlEQVR4nO2cT04UURCHvwCBhX/WMuyNR9G49gQmLhBZMp5D9CC68AiIC8UjGDXuDWxYlXmZB9Fok5nuN6mq7t+XVMIGpuqbmno9Q02DEEIIIYQQQkyIHeAQOAUuAEsSFzXnA2Cb4OwBXwJIs4FxVmsJ28ljkGw1Pkft7MMAcqxxPCcgHwOIscbxgYCcBxBjjaPUFA4baYTDW4hJNO6y1NH4i9ToIEaEw1uISTTustTR+IvU6CBGhMNbiEk07rLU0fiL1OhgIeEbcAw8BB4At2qUnx8Br4HvEt2/k34Az4CtJc6HDeAJ8FUdzUqS3wJ3ehzI5XfeaXSwlORXtUP7slFHjWY03RLeA5sDJP8pu7wqdBjy/5ncZ1x0cRf4qasO/hH9dIVdkWV3MMphqss7/r6E2+y5K3LTDsZWfaXoOpqFhOOBuyI37WC8kWiuRZU3HkN3Rbp2MB5LNNeS7jfYFenawSjvIDU6WEi43WBXpGsHo/xtiWYhoYtWHwBJNBK9MuvoGlNHD5dyCRwBM9ZPeYx5fcxWT54bqxYwd8hxPkXRuw453puiaC+y5Jm+AEuSZ/oCLEme6QuwJHmmL8CS5Jm+AEuSZ/oCLEme6QuwJHmmL8CS5Jm+AEuSZ/oCLEme6QuwJHk2K2DmkOPeFEXPHXJ8OUXRl1W2Pvhfs2hLEuHwFmISjbssdTT+IjU6iBHh8BZiEo27LHU0/iI1OogR4fAWYhKNuyx1NP4iNTqIEeHwFmISjbusUXX0GG8C+4uAnAYQY43jhIC8CCDGGsc+Admp38u2kcSnqLeev/ov89lIJM8Izna9vcNJsgPyvOa8H7mThRBCCCGEEILW/AYj/yS3Y4SIUQAAAABJRU5ErkJggg==">
+                    <i class="fa-solid fa-lock black"></i>
                 </div>
-                <label id="passError"></label>
+                <label id="passError" class="none"></label>
             </th>
         </tr>
-        <tr>
-            <th align="center"><input style="width: 80%;" type="button" value="Captcha" onclick="cap()"></th>
-        </tr>
         <tr id="captchrow">
+            <th align="left"><span>Enter Captcha:</span></th>
             <th><input style="background-color: rgb(207, 207, 207);" type="text" name="" id="captcha" readonly> </th>
-
+<th><i class="fa-solid fa-2x fa-rotate-right"  onclick="cap()"></i></th>
             <th><input type="text" name="" id="captchaInput"></th>
         </tr>
         <tr>
             <th><input id="Submit" type="button" value="Submit" onclick="validcap()"></th>
         </tr>
+
     </table>
 </body>
+
 <script>
     function cap() {
         var variables = ['a', 'b', 'c', 'd', 'e', '1', '2', '3', '4', '5', '!', '@', '#', '$', '%'];
@@ -240,32 +297,70 @@
             alert('Captcha not matched!!')
         }
     }
-    function post(form) {
+    $(document).ready(function () { cap() })
+    function validateEmail(form) {
         var emailPattern = /^\w+([.-]\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-        if (emailPattern.test(form.get('email'))){
-            document.getElementById('emailError').innerHTML = "correct email"
-        }else{
-            document.getElementById('emailError').innerHTML = "wrong email"
+        var label = document.getElementById('emailError');
+        if (emailPattern.test(form.get('email'))) {
+            label.innerHTML = "Correct email"
+            label.classList.remove('invalid')
+            label.classList.add('valid')
+            document.querySelectorAll("i")[0].classList.toggle("valid")
+        } else {
+            document.getElementsByClassName('input')[0].classList.add('shake')
+            label.innerHTML = "Enter valid email"
+            label.classList.add('invalid')
+            
+            document.querySelectorAll("i")[0].classList.toggle("invalid")
         }
-
-        for (const [key, value] of form) {
-            console.log(key, value)
-        }
-
+    }
+    function validatePassowrd(form) {
         var passPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/
-        if (passPattern.test(form.get('password'))){
-            document.getElementById('passError').innerHTML = "correct"
-        }else{
-            document.getElementById('passError').innerHTML = "wrong"
+        var label = document.getElementById('passError')
+        if (passPattern.test(form.get('password'))) {
+            label.innerHTML = "Correct"
+            label.classList.remove('invalid')
+            label.classList.add('valid')
+            document.querySelectorAll("i")[1].classList.toggle("valid")
+        } else {
+            document.getElementsByClassName('input')[1].classList.add('shake')
+            label.innerHTML = "Enter valid Password"
+            label.classList.add('invalid')
+            
+            document.querySelectorAll("i")[1].classList.toggle("invalid")
         }
+    }
+    function post(form) {
+        validateEmail(form)
+        validatePassowrd(form)
+        var x = document.getElementsByTagName('label')
+
+        for (var i = 0; i < x.length; i++) {
+            // Do something with each element
+            console.log(x[i]);
+            if(x[i].classList.contains('valid')){
+                x[i].classList.add('none')
+            }else{
+                x[i].classList.remove('none')
+            }
+        }
+
+
 
         for (const [key, value] of form) {
             console.log(key, value)
         }
     }
     function p() {
-        console.log(window.screen.width)
+        alert(window.screen.availWidth)
     }
+    document.getElementsByClassName('input')[1].addEventListener('animationend', () => {
+        document.getElementsByClassName('input')[1].classList.remove('shake');
+    });
+    document.getElementsByClassName('input')[0].addEventListener('animationend', () => {
+        document.getElementsByClassName('input')[0].classList.remove('shake');
+    });
+
 </script>
 
 </html>
