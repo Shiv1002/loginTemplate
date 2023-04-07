@@ -64,10 +64,10 @@
             font-size: large;
         }
 
-        #captchrow{
+        #captchrow {
             display: flex;
             justify-content: space-between;
-            
+
         }
 
         #captchrow * {
@@ -77,11 +77,12 @@
         #Submit {
             width: 80%;
             border: 0px;
-            background-color: #000000;            
+            background-color: #000000;
             color: azure;
             font-size: x-large;
         }
-        #Submit:hover{
+
+        #Submit:hover {
             background-color: #ffffff86;
             color: #000000;
             font-size: x-large;
@@ -172,6 +173,7 @@
 </head>
 
 <body>
+
     <table>
         <tr>
             <th>
@@ -182,10 +184,11 @@
 
             <th>
                 <div class="input">
-                    <input id="username" type="text" value="" autocomplete="off" placeholder="Enter Email" />
+                    <input id="email" type="text" value="" autocomplete="off" placeholder="Enter Email" />
                     <img style="height: inherit;"
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFEUlEQVR4nO2cWchVVRTHf5o22mB9Nls0l5kRURHSQ0VEkUEPkn2EDxVREVG+1ENBEYa9BEmhEETzaHMvWWrz/FBhPTQXqWhqaV+Dpu7YtS593O65e59hD7ez/vCHy/edvfZe/3vOOnuvvfYFxWjsDBwhtJ8VDcGKOQt4DFgLmC7avz0KXKjCV8NYYDawooe4RbTXXg6Mq9hn67AP8FYJgbv5BrB3aidyxxTguxoid/gtcExqZ3LFXsCXDYjc4TfApNRO5YYxwKsNitzhK2JbIbgogMgdzux00naMbzhkdPNznYn8g7MCitzhGdJXq3FXBKHvTO1kDlgeQehPUjuZA36OIPR6Wo6dIojcoe2rtRiKKLTtq7UYUqHjYNeIQtu+WosxwJ8RRN6sS3H4NILQOr0D7o0g9D2pH90cMCOC0OemdjIHjJPccSiRv9ak0r+4LKDQl4zqp/UYC7weQORlOtv4L/Yvuevt4g/Afj36UQBHi0B1RV4FHKuK9sdBwNs1RLZtJ9MAJgLvBHx5mID8HTjFcyZyFbCmhG177ZVNzzB2ARZnIJypwBUlYueOwDDwDLC6h63V8r9huTYIdgCeykA4U4HvyZNZJdt3lLDxtGe/uoTtIi1hTQAubyqWNoX7HHHHfhF3ZCCcKcltwCM5zXPtoJ73iEHXZyCe8YzR86TGOSuMXuXs5rjWvqm3ZhwqZuecdxg92HeBPR3XXxwpmW48+TFwQU4hogjdA/8MONDR5jzgt8QCjwA3A9szIOjlxFfAoY52pwMbE4n8ouQuqsDOpOqiko0iZ1YCUx1tTyo4+xGKW4AbK4QJm+O4QSr918gTWRUzxec3ZYLgXZDez7F1HkvaKQ0laozH8rrMTsbucuakKK/xuHwBvpgGPFlg60PgCtdkwuXgL8CZjkEcAnwRUOQ/gHM8BTlA5v0jnnPtJcA1wIld8d6WDxwPXAe8LNe67Nk+5xe943wdtW/2fthXdoNDCD3LQ2C7ZF4gY63T14g8PXVvjAWSKSwldCc+Xupwdo+aJ55MDz7sGTfLZOJi8VeJ43aHp1RD+/hcGzHzt1EO+fQLE0syENRFe36mUsNbPDJ/iwLXS0xreGsqNCs3nB8h83dage3Jsp1k2iC05QOBM38TCuw+lIFwUYW2fNYj83dTRdtFK7B1bRTacqlH2erVFTJ/RUL/1FahLd93zBCqZP7sAfleWNRmoY2UyNopVz+cX2JBML3AxuFyQKe1QneK/g5rKPN3ex8bR8rm8SDEazvGIIZt5u84j8zfjw47q/rMPAYOob5F+2if2kDmby7/E4R8ZGyC5mxH/wfLwfUiG1tr5o+zQej4tMnjpxbs7OIjR3Jm4MU2EbjFo2B7oqP40E4LbxvkE6omErcBcxrI/K2UpNZ0SV4NDExkznOMx+5yPOFh57lMi36yEdrIb2j8nQwvgF16L+zTfqFjJ9ravjuRb1kJbYAHPaqKZkgoWSt8yeOlOF52ZVL5lZ3QBnih4ZebjdlPJ/YpS6EN8JpHzZ8PJshudWp/shXaAB/ULPweEhup/cheaAN8D5xcQeQTpIQt9fgHRmgj6dNbPSpakWvmNlCD0UqhjXADcL/8AuNU+Q3QSfJ5WPYqN2QwzoEX2gwwVWhUaFLfhXpHk144DR2kF1VjNCo0qe84vaNJL5KGDtILqDGavKgLFlRoUt+FekeTXjgNHaQXVWM0GQqtUCgUCoVCoVAoFOSIvwBtoc6hW9+oUAAAAABJRU5ErkJggg==">
                 </div>
+                <label id="emailError"></label>
             </th>
 
         </tr>
@@ -199,7 +202,7 @@
                 </div>
             </th>
         </tr>
-        <tr >
+        <tr>
             <th align="center"><input style="width: 80%;" type="button" value="Captcha" onclick="cap()"></th>
         </tr>
         <tr id="captchrow">
@@ -220,21 +223,33 @@
         var c = variables[Math.floor(Math.random() * 15)];
         var d = variables[Math.floor(Math.random() * 15)];
         var e = variables[Math.floor(Math.random() * 15)];
-        document.getElementById('captcha').value = a + b + c + d + e;
+        document.getElementById('captcha').value = a;
     }
     function validcap() {
         var string1 = document.getElementById('captcha').value;
         var string2 = document.getElementById('captchaInput').value;
+        const form = new FormData()
         console.log(string1)
-        if(  string1 =="" || string2 =="" ){
-            alert("Empty feilds")
-        }
-        else if (string1 == string2) {
-            alert("Form is validated.Thankyou!")
+        if (string1 == string2) {
+            form.append('email', document.getElementById('email').value)
+            form.append('password', document.getElementById('pass').value)
+            post(form)
             return true
         }
         else {
             alert('Captcha not matched!!')
+        }
+    }
+    function post(form) {
+        var emailPattern = /^\w+([.-]\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+        if (emailPattern.test(form.get('email'))){
+            document.getElementById('emailError').innerHTML = "correct email"
+        }else{
+            document.getElementById('emailError').innerHTML = "wrong email"
+        }
+
+        for (const [key, value] of form) {
+            console.log(key, value)
         }
     }
     function p() {
