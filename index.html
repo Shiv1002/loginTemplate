@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;1,500;1,600;1,700&family=Carter+One&family=Exo:wght@300;400;500;600&family=Kaushan+Script&family=Rubik:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <title>LoginPage</title>
 
     <style>
@@ -23,27 +27,28 @@
             flex-direction: column;
             align-items: center;
 
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Cabin', sans-serif;
             margin-top: 5vh;
 
         }
 
-        ::placeholder {
-            /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+        table {
+            height: 40%;
+            width: 40%;
+            border: 2px solid rgba(234, 234, 234, 0.441);
+            backdrop-filter: blur(3px);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: aliceblue;
+            text-shadow: 2px 2px 6px #887c7c;
+            border-radius: 1.3rem;
+            padding: 0.8rem;
+
 
         }
 
-        table {
-            height: 60%;
-            width: 40%;
-            border: 4px solid rgb(145, 74, 23);
-            background-image: url(wallpaperflare.com_wallpaper.jpg);
-            color: aliceblue;
-            text-shadow: 9px 6px 6px #887c7c;
-            border-radius: 2rem;
-            padding: 1.2rem;
-
-
+        table h1 {
+            font-size: 3rem;
         }
 
         table * {
@@ -52,53 +57,117 @@
 
         table tr th input {
             height: 3.4rem;
-            width: 20.8rem;
-            font-family: 'Oswald', sans-serif;
-            /* width: 400px; */
-            border-radius: 10px;
+            width: 80%;
+            border-radius: 2.8rem;
+            font-family: 'Cabin';
             border-color: aliceblue;
-            text-align: center;
             font-size: large;
         }
 
-        #captchrow {
-            display:  flex;
+        #captchrow{
+            display: flex;
             justify-content: space-between;
             
         }
 
         #captchrow * {
-
             width: 60% !important;
         }
 
         #Submit {
-            height: 4rem;
-            width: 29rem;
-            background-color: #0d6efd;
+            width: 80%;
+            border: 0px;
+            background-color: #000000;            
             color: azure;
-            font-size: xx-large;
+            font-size: x-large;
+        }
+        #Submit:hover{
+            background-color: #ffffff86;
+            color: #000000;
+            font-size: x-large;
         }
 
         table tr th input:hover {
             border-color: rgb(202, 177, 147);
         }
+
+        div.input {
+            margin: 0.3rem auto;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: white;
+            height: 2rem;
+            box-sizing: border-box;
+            justify-content: space-between;
+            border-radius: 4rem;
+        }
+
+        div.input input {
+            width: 80%;
+            height: inherit;
+            border: 0px solid rgb(132, 40, 40);
+            outline: none;
+        }
+
+        div.input input:focus {
+            border: 0px;
+        }
+
+
+
+        @media screen and (max-width: 1196px) {
+            table {
+                width: 35%;
+            }
+
+            body {
+                background-color: #fd0d0d;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            table {
+                width: 45%;
+            }
+
+            body {
+                background-color: #45fd0d;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            table {
+                width: 60%;
+            }
+
+            body {
+                background-color: #000000;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            table {
+                width: 80%;
+            }
+
+            body {
+                background-color: #0d6efd;
+            }
+        }
+
+        @media screen and (max-width:500px) {
+            table {
+                width: 100%;
+            }
+
+            body {
+                background-color: #ffffff;
+            }
+        }
     </style>
-<!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="https://google124.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '4']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='//cdn.matomo.cloud/google124.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
+    <!-- Matomo -->
 
 </head>
 
@@ -106,17 +175,32 @@
     <table>
         <tr>
             <th>
-                <h1 style="font-size: 80px"> Login </h1>
+                <h1> Login </h1>
             </th>
         </tr>
         <tr>
-            <th><input id="username" type="text" value="" placeholder="Enter Email"></th>
+
+            <th>
+                <div class="input">
+                    <input id="username" type="text" value="" autocomplete="off" placeholder="Enter Email" />
+                    <img style="height: inherit;"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFEUlEQVR4nO2cWchVVRTHf5o22mB9Nls0l5kRURHSQ0VEkUEPkn2EDxVREVG+1ENBEYa9BEmhEETzaHMvWWrz/FBhPTQXqWhqaV+Dpu7YtS593O65e59hD7ez/vCHy/edvfZe/3vOOnuvvfYFxWjsDBwhtJ8VDcGKOQt4DFgLmC7avz0KXKjCV8NYYDawooe4RbTXXg6Mq9hn67AP8FYJgbv5BrB3aidyxxTguxoid/gtcExqZ3LFXsCXDYjc4TfApNRO5YYxwKsNitzhK2JbIbgogMgdzux00naMbzhkdPNznYn8g7MCitzhGdJXq3FXBKHvTO1kDlgeQehPUjuZA36OIPR6Wo6dIojcoe2rtRiKKLTtq7UYUqHjYNeIQtu+WosxwJ8RRN6sS3H4NILQOr0D7o0g9D2pH90cMCOC0OemdjIHjJPccSiRv9ak0r+4LKDQl4zqp/UYC7weQORlOtv4L/Yvuevt4g/Afj36UQBHi0B1RV4FHKuK9sdBwNs1RLZtJ9MAJgLvBHx5mID8HTjFcyZyFbCmhG177ZVNzzB2ARZnIJypwBUlYueOwDDwDLC6h63V8r9huTYIdgCeykA4U4HvyZNZJdt3lLDxtGe/uoTtIi1hTQAubyqWNoX7HHHHfhF3ZCCcKcltwCM5zXPtoJ73iEHXZyCe8YzR86TGOSuMXuXs5rjWvqm3ZhwqZuecdxg92HeBPR3XXxwpmW48+TFwQU4hogjdA/8MONDR5jzgt8QCjwA3A9szIOjlxFfAoY52pwMbE4n8ouQuqsDOpOqiko0iZ1YCUx1tTyo4+xGKW4AbK4QJm+O4QSr918gTWRUzxec3ZYLgXZDez7F1HkvaKQ0laozH8rrMTsbucuakKK/xuHwBvpgGPFlg60PgCtdkwuXgL8CZjkEcAnwRUOQ/gHM8BTlA5v0jnnPtJcA1wIld8d6WDxwPXAe8LNe67Nk+5xe943wdtW/2fthXdoNDCD3LQ2C7ZF4gY63T14g8PXVvjAWSKSwldCc+Xupwdo+aJ55MDz7sGTfLZOJi8VeJ43aHp1RD+/hcGzHzt1EO+fQLE0syENRFe36mUsNbPDJ/iwLXS0xreGsqNCs3nB8h83dage3Jsp1k2iC05QOBM38TCuw+lIFwUYW2fNYj83dTRdtFK7B1bRTacqlH2erVFTJ/RUL/1FahLd93zBCqZP7sAfleWNRmoY2UyNopVz+cX2JBML3AxuFyQKe1QneK/g5rKPN3ex8bR8rm8SDEazvGIIZt5u84j8zfjw47q/rMPAYOob5F+2if2kDmby7/E4R8ZGyC5mxH/wfLwfUiG1tr5o+zQej4tMnjpxbs7OIjR3Jm4MU2EbjFo2B7oqP40E4LbxvkE6omErcBcxrI/K2UpNZ0SV4NDExkznOMx+5yPOFh57lMi36yEdrIb2j8nQwvgF16L+zTfqFjJ9ravjuRb1kJbYAHPaqKZkgoWSt8yeOlOF52ZVL5lZ3QBnih4ZebjdlPJ/YpS6EN8JpHzZ8PJshudWp/shXaAB/ULPweEhup/cheaAN8D5xcQeQTpIQt9fgHRmgj6dNbPSpakWvmNlCD0UqhjXADcL/8AuNU+Q3QSfJ5WPYqN2QwzoEX2gwwVWhUaFLfhXpHk144DR2kF1VjNCo0qe84vaNJL5KGDtILqDGavKgLFlRoUt+FekeTXjgNHaQXVWM0GQqtUCgUCoVCoVAoFOSIvwBtoc6hW9+oUAAAAABJRU5ErkJggg==">
+                </div>
+            </th>
+
         </tr>
         <tr>
-            <th><input id="pass" type="password" value="" placeholder="Password"></th>
+            <th>
+                <div class="input">
+                    <input id="pass" type="password" value="" autocomplete="off" placeholder="Password">
+                    <img style="height: inherit;"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAACfUlEQVR4nO2cT04UURCHvwCBhX/WMuyNR9G49gQmLhBZMp5D9CC68AiIC8UjGDXuDWxYlXmZB9Fok5nuN6mq7t+XVMIGpuqbmno9Q02DEEIIIYQQQkyIHeAQOAUuAEsSFzXnA2Cb4OwBXwJIs4FxVmsJ28ljkGw1Pkft7MMAcqxxPCcgHwOIscbxgYCcBxBjjaPUFA4baYTDW4hJNO6y1NH4i9ToIEaEw1uISTTustTR+IvU6CBGhMNbiEk07rLU0fiL1OhgIeEbcAw8BB4At2qUnx8Br4HvEt2/k34Az4CtJc6HDeAJ8FUdzUqS3wJ3ehzI5XfeaXSwlORXtUP7slFHjWY03RLeA5sDJP8pu7wqdBjy/5ncZ1x0cRf4qasO/hH9dIVdkWV3MMphqss7/r6E2+y5K3LTDsZWfaXoOpqFhOOBuyI37WC8kWiuRZU3HkN3Rbp2MB5LNNeS7jfYFenawSjvIDU6WEi43WBXpGsHo/xtiWYhoYtWHwBJNBK9MuvoGlNHD5dyCRwBM9ZPeYx5fcxWT54bqxYwd8hxPkXRuw453puiaC+y5Jm+AEuSZ/oCLEme6QuwJHmmL8CS5Jm+AEuSZ/oCLEme6QuwJHmmL8CS5Jm+AEuSZ/oCLEme6QuwJHk2K2DmkOPeFEXPHXJ8OUXRl1W2Pvhfs2hLEuHwFmISjbssdTT+IjU6iBHh8BZiEo27LHU0/iI1OogR4fAWYhKNuyx1NP4iNTqIEeHwFmISjbusUXX0GG8C+4uAnAYQY43jhIC8CCDGGsc+Admp38u2kcSnqLeev/ov89lIJM8Izna9vcNJsgPyvOa8H7mThRBCCCGEEILW/AYj/yS3Y4SIUQAAAABJRU5ErkJggg==">
+
+                </div>
+            </th>
         </tr>
-        <tr padding="100px" style="font-size: large;">
-            <th align="center"><input type="button" value="Captcha" onclick="cap()"></th>
+        <tr >
+            <th align="center"><input style="width: 80%;" type="button" value="Captcha" onclick="cap()"></th>
         </tr>
         <tr id="captchrow">
             <th><input style="background-color: rgb(207, 207, 207);" type="text" name="" id="captcha" readonly> </th>
@@ -141,7 +225,11 @@
     function validcap() {
         var string1 = document.getElementById('captcha').value;
         var string2 = document.getElementById('captchaInput').value;
-        if (string1 == string2) {
+        console.log(string1)
+        if(  string1 =="" || string2 =="" ){
+            alert("Empty feilds")
+        }
+        else if (string1 == string2) {
             alert("Form is validated.Thankyou!")
             return true
         }
@@ -149,7 +237,9 @@
             alert('Captcha not matched!!')
         }
     }
-
+    function p() {
+        console.log(window.screen.width)
+    }
 </script>
 
 </html>
