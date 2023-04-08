@@ -155,6 +155,28 @@
         div.input input:focus {
             border: 0px;
         }
+        #reCaptcha:active{
+color:blue;
+        }
+
+        .notification{
+            color: #fcfcfc;
+            padding: 1rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border-radius: 0.3rem;
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+        }
+        #noCaptcha{
+            background-color: #ff4d4dc3 ;
+        }
+        #inValidCap{
+            background-color: #ff1c1cc6 ;
+        }
+        #submitForm{
+            background-color: #37ff0ab5 ;
+        }
 
         @media screen and (min-width:400px) {
             table {
@@ -242,7 +264,7 @@
 
             <th>
                 <div class="input">
-                    <input id="email" type="text" value="" autocomplete="off" placeholder="Enter Email" />
+                    <input id="email" title="email field" type="text" value="" autocomplete="off" placeholder="Enter Email" />
 
                     <i class="fa-solid fa-user black"></i>
                 </div>
@@ -253,26 +275,46 @@
         <tr>
             <th>
                 <div class="input">
-                    <input id="pass" type="password" value="" autocomplete="off" placeholder="Password">
+                    <input id="pass" title="password field" title="xyz" type="password" value="" autocomplete="off" placeholder="Password">
                     <i class="fa-solid fa-lock black"></i>
                 </div>
                 <label id="passError" class="none"></label>
             </th>
         </tr>
-        <tr id="captchrow">
+        <tr id="captchrow" title="enter captcha into captcha field">
             <th align="left"><span>Enter Captcha:</span></th>
-            <th><input style="background-color: rgb(207, 207, 207);" type="text" name="" id="captcha" readonly> </th>
-<th><i class="fa-solid fa-2x fa-rotate-right"  onclick="cap()"></i></th>
-            <th><input type="text" name="" id="captchaInput"></th>
+            <th><input title="Captcha" style="background-color: rgb(207, 207, 207);" type="text" name="" id="captcha" readonly> </th>
+<th><i id="reCaptcha" class="fa-solid fa-2x fa-rotate-right" title="reCaptcha" onclick="cap();"></i></th>
+            <th><input type="text" title="Enter Captcha here" name="captcha field" id="captchaInput"></th>
         </tr>
         <tr>
-            <th><input id="Submit" type="button" value="Submit" onclick="validcap()"></th>
+            <th><input id="Submit" title="submit this form" type="button" title="xyz" value="Submit" onclick="validcap()"></th>
         </tr>
 
     </table>
+    <div id="noCaptcha" class="notification none">
+        <span>Enter captcha</span>
+    </div>
+    <div id="inValidCap" class="notification none">
+        <span>Enter valid captcha</span>
+    </div>
+    <div id="submitForm" class="notification none">
+        <span>form is submitted</span>
+    </div>
+    
+    
 </body>
 
 <script>
+    function notify(id){
+        let ele = document.getElementById(id);
+        let interval = setInterval(function(){
+            console.log("set int")
+            ele.classList.toggle('none')
+        },1000)
+        setTimeout(function(){clearInterval(interval);console.log("clear int")},2000)
+        return
+    }
     function cap() {
         var variables = ['a', 'b', 'c', 'd', 'e', '1', '2', '3', '4', '5', '!', '@', '#', '$', '%'];
         var a = variables[Math.floor(Math.random() * 15)];
@@ -287,14 +329,17 @@
         var string2 = document.getElementById('captchaInput').value;
         const form = new FormData()
         console.log(string1)
-        if (string1 == string2) {
+        if(string2 == ""){
+            notify("noCaptcha")
+        }
+        else if (string1 == string2) {
             form.append('email', document.getElementById('email').value)
             form.append('password', document.getElementById('pass').value)
             post(form)
             return true
         }
         else {
-            alert('Captcha not matched!!')
+            notify("inValidCap")
         }
     }
     $(document).ready(function () { cap() })
@@ -306,12 +351,13 @@
             label.classList.remove('invalid')
             label.classList.add('valid')
             document.querySelectorAll("i")[0].classList.toggle("valid")
+            return true
         } else {
             document.getElementsByClassName('input')[0].classList.add('shake')
             label.innerHTML = "Enter valid email"
-            label.classList.add('invalid')
-            
+            label.classList.add('invalid')            
             document.querySelectorAll("i")[0].classList.toggle("invalid")
+        return false
         }
     }
     function validatePassowrd(form) {
@@ -322,17 +368,18 @@
             label.classList.remove('invalid')
             label.classList.add('valid')
             document.querySelectorAll("i")[1].classList.toggle("valid")
+            return true
         } else {
             document.getElementsByClassName('input')[1].classList.add('shake')
             label.innerHTML = "Enter valid Password"
             label.classList.add('invalid')
-            
             document.querySelectorAll("i")[1].classList.toggle("invalid")
+            return false
         }
     }
     function post(form) {
-        validateEmail(form)
-        validatePassowrd(form)
+        let vE = validateEmail(form)
+        let vP = validatePassowrd(form)
         var x = document.getElementsByTagName('label')
 
         for (var i = 0; i < x.length; i++) {
@@ -344,7 +391,13 @@
                 x[i].classList.remove('none')
             }
         }
-
+        if(vE && vP){
+            notify('submitForm')
+            for(var ele of document.querySelectorAll("input[type='text'],input[type='password']")){
+            ele.value = "";
+            }
+            
+        }
 
 
         for (const [key, value] of form) {
