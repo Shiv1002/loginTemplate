@@ -10,11 +10,10 @@ pipeline {
         }
         
         stage('Build and Deploy') {
-            environment {
-                NODE_VERSION = '14'
-            }
+            
             steps {
-                sh "python -m SimpleHTTPServer 8000 &"
+                sh "docker build -t node-container ."
+                sh "docker run -d -p 8080:8080 node-container"
             }
         }
     }
