@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Clone repository') {
             steps {
+                echo 'Cloning repository...'
                 git url: 'https://github.com/Shiv1002/loginTemplate.git'
             }
         }
