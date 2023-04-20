@@ -2,6 +2,11 @@ pipeline {
     agent any
     
     stages {
+        stage('Check for Docker') {
+            steps {
+                sh "docker --version"
+            }
+        }
         stage('Clone repository') {
             steps {
                 echo 'Cloning repository...'
@@ -9,14 +14,6 @@ pipeline {
             }
         }
         
-        stage('Build and Deploy') {
-            
-            steps {
-                echo 'creating node container'
-                sh "docker build -t node-container ."
-                echo 'running node container'
-                sh "docker run -d -p 8080:8080 node-container"
-            }
-        }
+        
     }
 }
