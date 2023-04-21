@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Run and deploy') {
             steps {
-                bat 'index.html && http-server -p 8080'
+                bat 'http-server -a localhost -p 8080'
                 echo 'file deployed'
             }
         }
