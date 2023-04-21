@@ -253,8 +253,54 @@ color:blue;
 </head>
 
 <body>
-    <h1>hello</h1>
     
+    <table>
+        <tr>
+            <th>
+                <h1> Login with shivank</h1>
+            </th>
+        </tr>
+        <tr>
+
+            <th>
+                <div class="input">
+                    <input id="email" title="email field" type="text" value="" autocomplete="off" placeholder="Enter Email" />
+
+                    <i class="fa-solid fa-user black"></i>
+                </div>
+                <label id="emailError" class="none"></label>
+            </th>
+
+        </tr>
+        <tr>
+            <th>
+                <div class="input">
+                    <input id="pass" title="password field" title="xyz" type="password" value="" autocomplete="off" placeholder="Password">
+                    <i class="fa-solid fa-lock black"></i>
+                </div>
+                <label id="passError" class="none"></label>
+            </th>
+        </tr>
+        <tr id="captchrow" title="enter captcha into captcha field">
+            <th align="left"><span>Enter Captcha:</span></th>
+            <th><input title="Captcha" style="background-color: rgb(207, 207, 207);" type="text" name="" id="captcha" readonly> </th>
+<th><i id="reCaptcha" class="fa-solid fa-2x fa-rotate-right" title="reCaptcha" onclick="cap();"></i></th>
+            <th><input type="text" title="Enter Captcha here" name="captcha field" id="captchaInput"></th>
+        </tr>
+        <tr>
+            <th><input id="Submit" title="submit this form" type="button" title="xyz" value="Submit" onclick="validcap()"></th>
+        </tr>
+
+    </table>
+    <div id="noCaptcha" class="notification none">
+        <span>Enter captcha</span>
+    </div>
+    <div id="inValidCap" class="notification none">
+        <span>Enter valid captcha</span>
+    </div>
+    <div id="submitForm" class="notification none">
+        <span>form is submitted</span>
+    </div>
 </body>
 
 <script>
