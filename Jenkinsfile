@@ -12,13 +12,13 @@ pipeline {
         stage('Build and run') {
             steps {
                 
-                bat 'npm install -g http-server pm2' 
+                bat 'npm install -g http-server' 
                 echo 'building node container'
             }
         }
         stage('Run and deploy') {
             steps {
-                bat 'pm2 start http-server --name "my-web-server" -- -a localhost -p 8081'
+                bat 'http-server -a localhost -p 8081'
                 echo 'file deployed'
             }
         }
