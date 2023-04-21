@@ -13,7 +13,7 @@ pipeline {
                 git url: 'https://github.com/Shiv1002/loginTemplate.git'
             }
         }
-        stage('Install http-server') {
+        stage('Build and run') {
             steps {
                 
                 bat 'npm install -g http-server'
