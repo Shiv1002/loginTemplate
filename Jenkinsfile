@@ -12,7 +12,7 @@ pipeline {
         stage('Build and run') {
             steps {
                 
-                bat 'npm install -g http-server'
+                bat 'npm install -g http-server pm2' 
                 echo 'building node container'
             }
         }
