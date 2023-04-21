@@ -13,14 +13,19 @@ pipeline {
                 git url: 'https://github.com/Shiv1002/loginTemplate.git'
             }
         }
-        stage('Build and Deploy') {
+        stage('Install http-server') {
             steps {
-                bat "docker build -t node-container ."
-                bat "docker run -d -p 8080:8080 node-container"
-                echo 'deployed index html file on 8080 port'
+                
+                bat 'npm install -g http-server'
+                echo 'building node container'
             }
         }
-        
+        stage('Run and deploy') {
+            steps {
+                bat 'index.html && http-server -p 8080'
+                echo 'file deployed'
+            }
+        }
         
     }
 }
