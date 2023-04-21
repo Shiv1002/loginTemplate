@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Run and deploy') {
             steps {
-                bat 'pm2 start http-server --name "my-web-server" -- -a localhost -p 5000'
+                bat 'pm2 start http-server --name "my-web-server" -- -a localhost -p 8081'
                 echo 'file deployed'
             }
         }
