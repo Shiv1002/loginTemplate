@@ -17,7 +17,7 @@ pipeline {
         stage('Build and Deploy') {
             steps {
                 bat "docker build -t node-container ."
-                bat "docker run -d -p 8081:8081 node-container"
+                bat "docker run -d -p 8081:8080 node-container"
                 echo 'file is deployed'
             }
         }
