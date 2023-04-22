@@ -2,24 +2,23 @@ pipeline {
     agent any
     
     stages {
-        
+        stage('Check  docker'){
+            steps{
+                bat 'docker --version'
+            }
+        }
         stage('Clone repository') {
             steps {
                 echo 'Cloning repository...'
                 git url: 'https://github.com/Shiv1002/loginTemplate.git'
             }
         }
-        stage('Build and run') {
+        
+        stage('Build and Deploy') {
             steps {
-                
-                bat 'npm install -g http-server' 
-                echo 'building node container'
-            }
-        }
-        stage('Run and deploy') {
-            steps {
-                bat 'http-server -a localhost -p 8081'
-                echo 'file deployed'
+                bat "docker build -t node-container ."
+                bat "docker run -d -p 8080:8080 node-container"
+                echo 'file is deployed'
             }
         }
         
